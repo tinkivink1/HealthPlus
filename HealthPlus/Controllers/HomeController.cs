@@ -13,7 +13,7 @@ namespace HealthPlus.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult index()
         {
             return View();
         }
@@ -23,6 +23,10 @@ namespace HealthPlus.Controllers
             return View();
         }
 
+        public IActionResult HealthPlus()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
