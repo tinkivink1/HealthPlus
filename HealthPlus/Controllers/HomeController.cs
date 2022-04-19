@@ -33,6 +33,11 @@ namespace HealthPlus.Controllers
             return View();
         }
 
+        public IActionResult LearnMore()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
