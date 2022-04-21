@@ -44,8 +44,6 @@
 </form>
 					-->
 <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-<a class="button" asp-area="" asp-controller="Home" asp-action="Regestration">Reg</a>
-
 		<div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <!-- Modal Content -->
@@ -55,8 +53,10 @@
       <input type="text" placeholder="Enter Username" name="uname" required>
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
+	   <label for="psw"><b>Email</b></label>
+      <input type="password" placeholder="Enter Email" name="psw" required>
       <button type="submit">Login</button>
-	<input type="checkbox" id="myCheckbox">
+     <input type="checkbox" id="myCheckbox">
 	<label for="myCheckbox">Запомнить меня</label>
     </div>
     <div class="container" style="background-color:darkslateblue">
