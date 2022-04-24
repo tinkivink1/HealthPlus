@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "secretStore": "LocalSecretsFile",
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:DataSource=(LocalDB):MSSQLLocalDB;InitialCatalog=health;IntegratedSecurity=True"
+    }
+  }
+}

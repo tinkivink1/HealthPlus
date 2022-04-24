@@ -48,6 +48,12 @@ namespace HealthPlus.Controllers
             return View();
         }
 
+        public IActionResult Account()
+        {
+            AccountController account = new AccountController();
+            return account.Account();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
