@@ -12,60 +12,23 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Hyperspace</a>
-			<nav>
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html" class="active">Elements</a></li>
-				</ul>
-			</nav>
+			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Авторизация</a>
 		</header>
-
-	
-					<!-- Form -->
-					<!---
-									<form>
-		<div class="container">
-		<label for="uname"><b>Username</b></label>
-		<input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <label>
-    </label>
-  </div
-  <div>
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+<div class="form_auth_block">
+  <div class="form_auth_block_content">
+    <p class="form_auth_block_head_text">Авторизация</p>
+    <form class="form_auth_style" action="#" method="post">
+      <label>Введите Ваш емейл</label>
+      <input type="email" name="auth_email" placeholder="Введите Ваш емейл" required >
+      <label>Введите Ваш пароль</label>
+      <input type="password" name="auth_pass" placeholder="Введите пароль" required >
+	  	  <input type="checkbox" id="myCheckbox">
+		<label for="myCheckbox">Запомнить меня</label>
+      <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
+    </form>
   </div>
-</form>
-					-->
-<button onclick="document.getElementById('id01').style.display='block'">Login</button>
-<a class="button" asp-area="" asp-controller="Home" asp-action="Regestration">Reg</a>
-
-		<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-      <button type="submit">Login</button>
-	<input type="checkbox" id="myCheckbox">
-	<label for="myCheckbox">Запомнить меня</label>
-    </div>
-    <div class="container" style="background-color:darkslateblue">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
 </div>
-					
+
 
 		<!-- Footer -->
 		<footer id="footer" class="wrapper alt">
@@ -85,14 +48,7 @@
 		<script src="~/js/breakpoints.min.js"></script>
 		<script src="~/js/util.js"></script>
 		<script src="~/js/main.js"></script>
-		<script>
-		var modal = document.getElementById('id01');
-		window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-			}
-		}
-		</script>
+
 }
 
 	</body>

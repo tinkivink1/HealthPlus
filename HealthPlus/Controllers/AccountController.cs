@@ -1,71 +1,40 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HealthPlus.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthPlus.Controllers
 {
     public class AccountController : Controller
     {
+        private ApplicationContext db;
+
+        public AccountController(ApplicationContext context)
+        {
+            db = context;
+        }
         // GET: AccountController
-        public ActionResult Account()
+        public ActionResult Account_homepage()
         {
             return View();
         }
 
-        // POST: AccountController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Account()
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(await db.clients.ToListAsync());
         }
-
-        // GET: AccountController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Create()
         {
             return View();
         }
-
-        // POST: AccountController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Create(Client client)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            db.clients.Add(client);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Account");
         }
 
-        // GET: AccountController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: AccountController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
     }
 }
