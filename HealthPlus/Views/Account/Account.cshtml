@@ -33,17 +33,6 @@
 
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						@model IEnumerable<HealthPlus.Models.Client>
-							@{
-							ViewBag.Title = "Все пользователи";
-									}
-							<a asp-action="Create">Добавить пользователя</a>
-							<table class="table">
-							<tr><td>Имя</td><td>Возраст</td></tr>
-							@foreach (var item in Model)
-							{
-							 <tr><td>@item.name</td><td>@item.Age</td></tr>
-							}
 					</table>
 					</section>
 
