@@ -1,8 +1,18 @@
 using HealthPlus.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore;
+using System.Configuration;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 
 
@@ -11,6 +21,9 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+
+builder.Services.AddDbContext<ApplicationContext> (options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationContext")));
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
