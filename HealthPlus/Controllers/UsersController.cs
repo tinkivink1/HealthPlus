@@ -7,13 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthPlus.Data;
 using HealthPlus.Models;
+using HealthPlus.Controllers;
+
 
 namespace HealthPlus.Controllers
 {
     public class UsersController : Controller
     {
+     
         private readonly HealthPlusUsersContext _context;
-
+    
         public UsersController(HealthPlusUsersContext context)
         {
             _context = context;
@@ -26,6 +29,11 @@ namespace HealthPlus.Controllers
                           View(await _context.Users.ToListAsync()) :
                           Problem("Entity set 'HealthPlusUsersContext.Users'  is null.");
         }
+          public IActionResult Registration()
+            {
+            return View();
+            }
+
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -35,7 +43,8 @@ namespace HealthPlus.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+            var users = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (users == null)
             {
                 return NotFound();
@@ -55,13 +64,13 @@ namespace HealthPlus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,client_name,client_surname,client_password,client_email,Id_training,age")] Users users)
+        public async Task<IActionResult> Create([Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(homeController.Index));
             }
             return View(users);
         }
@@ -87,7 +96,7 @@ namespace HealthPlus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,client_name,client_surname,client_password,client_email,Id_training,age")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
         {
             if (id != users.Id)
             {

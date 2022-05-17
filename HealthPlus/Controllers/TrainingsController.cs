@@ -23,8 +23,8 @@ namespace HealthPlus.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Trainings != null ? 
-                          View(await _context.Trainig.ToListAsync()) :
-                          Problem("Entity set 'HealthPlusUsersContext.Trainings'  is null.");
+                          View(await _context.Trainings.ToListAsync()) :
+                          Problem("Entity set 'HealthPlusUsersContext.Trainings' is null.");
         }
 
         // GET: Trainings/Details/5

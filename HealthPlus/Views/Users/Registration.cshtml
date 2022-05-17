@@ -1,18 +1,27 @@
 ﻿@model HealthPlus.Models.Users
+<!DOCTYPE HTML>
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
+<!--- Данный файл нужно будет засунуть в кнопку-->
+	<head>
+		<title>Elements - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="~/css/main.css" />
+		<noscript><link rel="stylesheet" href="~/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-<h1>Edit</h1>
+		<!-- Header -->
+		<header id="header">
+			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Регистрация</a>			
+		</header>
 
-<h4>Users</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+		   <div class="form_auth_block">
+    <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="client_name" class="control-label"></label>
                 <input asp-for="client_name" class="form-control" />
@@ -39,16 +48,33 @@
                 <span asp-validation-for="age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
-    </div>
-</div>
+			</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+  
+		<!-- Footer -->
+		<footer id="footer" class="wrapper alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+		<!-- Scripts -->
+		<script src="~/js/jquery.min.js"></script>
+		<script src="~/js/jquery.scrollex.min.js"></script>
+		<script src="~/js/jquery.scrolly.min.js"></script>
+		<script src="~/js/browser.min.js"></script>
+		<script src="~/js/breakpoints.min.js"></script>
+		<script src="~/js/util.js"></script>
+		<script src="~/js/main.js"></script>
+
+	@section Scripts {
+		@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	}
+	
+	</body>

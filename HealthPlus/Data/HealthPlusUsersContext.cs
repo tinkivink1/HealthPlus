@@ -9,12 +9,14 @@ namespace HealthPlus.Data
 {
     public class HealthPlusUsersContext : DbContext
     {
+       
         public HealthPlusUsersContext (DbContextOptions<HealthPlusUsersContext> options)
             : base(options)
         {
+           
         }
 
-        public DbSet<HealthPlus.Models.Users>? Users { get; set; }
-        public DbSet<HealthPlus.Models.Trainings>? Trainings { get; set; }
+        public DbSet<HealthPlus.Models.Users>? Users { get; set; } = null!;
+        public DbSet<HealthPlus.Models.Trainings>? Trainings { get; set; } = null!;
     }
 }
