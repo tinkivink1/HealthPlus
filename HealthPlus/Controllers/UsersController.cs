@@ -70,7 +70,7 @@ namespace HealthPlus.Controllers
             {   
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(homeController.Index));
+                return RedirectToAction(nameof(Registration));
             }
             return View(users);
         }
