@@ -16,6 +16,7 @@ namespace HealthPlus.Controllers
     {
      
         private readonly HealthPlusUsersContext _context;
+        private int IdForAccount;
     
         public UsersController(HealthPlusUsersContext context)
         {
@@ -34,6 +35,10 @@ namespace HealthPlus.Controllers
             return View();
             }
 
+        public IActionResult Account()
+        {
+            return View();
+        }
         public IActionResult Login()
         {
             return View();
@@ -148,18 +153,23 @@ namespace HealthPlus.Controllers
 
             return View(users);
         }
-
-        public async Task<IActionResult> Login_1(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
+        public async Task<RedirectToActionResult> Loginn(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
         {
-        
-            if (ModelState.IsValid)
+            var usersColl = await _context.Users.Select(b => b).ToListAsync();
+            for (int i = 0; i < usersColl.Count; i++)
             {
-
-                var usersColl = _context.Users.Select(b => b).ToList();
-                return RedirectToAction(nameof(Login));
+                if (users.client_email == usersColl[i].client_email && users.client_password == usersColl[i].client_password)
+                {
+                    IdForAccount = usersColl[i].Id;
+                    return RedirectToAction(nameof(Account));
+                }
+               
             }
-            return View(users);
+            return RedirectToAction(nameof(Registration));
         }
+
+
+      
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

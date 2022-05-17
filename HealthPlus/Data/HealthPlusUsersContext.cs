@@ -10,8 +10,7 @@ namespace HealthPlus.Data
     public class HealthPlusUsersContext : DbContext
     {
        
-        public HealthPlusUsersContext (DbContextOptions<HealthPlusUsersContext> options)
-            : base(options)
+        public HealthPlusUsersContext (DbContextOptions<HealthPlusUsersContext> options): base(options)
         {
            
         }
