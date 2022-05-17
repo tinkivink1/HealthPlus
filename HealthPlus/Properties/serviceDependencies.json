@@ -6,6 +6,10 @@
     "mssql1": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:DataSource=(LocalDB):MSSQLLocalDB;InitialCatalog=health;IntegratedSecurity=True"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:HealthPlusUsersContext"
     }
   }
 }

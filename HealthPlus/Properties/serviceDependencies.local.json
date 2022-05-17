@@ -7,6 +7,10 @@
       "secretStore": "LocalSecretsFile",
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:DataSource=(LocalDB):MSSQLLocalDB;InitialCatalog=health;IntegratedSecurity=True"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:HealthPlusUsersContext"
     }
   }
 }

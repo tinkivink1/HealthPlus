@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using HealthPlus.Data;
 
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
+builder.Services.AddDbContext<HealthPlusUsersContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HealthPlusUsersContext") ?? throw new InvalidOperationException("Connection string 'HealthPlusUsersContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,8 +23,6 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 
-builder.Services.AddDbContext<ApplicationContext> (options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationContext")));
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

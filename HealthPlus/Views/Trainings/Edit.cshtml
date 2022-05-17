@@ -1,0 +1,39 @@
+﻿@model HealthPlus.Models.Trainings
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Trainings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id_training" />
+            <div class="form-group">
+                <label asp-for="training_name" class="control-label"></label>
+                <input asp-for="training_name" class="form-control" />
+                <span asp-validation-for="training_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="exercise_list" class="control-label"></label>
+                <input asp-for="exercise_list" class="form-control" />
+                <span asp-validation-for="exercise_list" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
