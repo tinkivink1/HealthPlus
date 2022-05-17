@@ -34,6 +34,11 @@ namespace HealthPlus.Controllers
             return View();
             }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -144,6 +149,17 @@ namespace HealthPlus.Controllers
             return View(users);
         }
 
+        public async Task<IActionResult> Login_1(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
+        {
+        
+            if (ModelState.IsValid)
+            {
+
+                var usersColl = _context.Users.Select(b => b).ToList();
+                return RedirectToAction(nameof(Login));
+            }
+            return View(users);
+        }
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
