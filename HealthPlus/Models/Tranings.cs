@@ -13,6 +13,7 @@ namespace HealthPlus.Models
         public string? exercise_list { get; set; }
         public byte[]? image { get; set; }
         public int? UserId { get; set; }
-        public Users? users { get; set; }
+        public List<Users>? users { get; set; } = new();    
+
     }
 }

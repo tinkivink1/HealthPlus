@@ -162,7 +162,6 @@ namespace HealthPlus.Controllers
                 if (users.client_email == usersColl[i].client_email && users.client_password == usersColl[i].client_password)
                 {
                   
-                    //return RedirectToAction(nameof(Account));
                     int id1 = usersColl[i].Id;
                     if (id1 == null || _context.Users == null)
                     {
@@ -207,5 +206,18 @@ namespace HealthPlus.Controllers
         {
             return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public async Task<IActionResult> AppendTrainings(int trainingID)
+        {
+            var training = _context.Trainings.FindAsync(trainingID).Result;
+            user = _context.Users.FindAsync(IdForAccount).Result;
+            user.trainings.Add(training);
+            _context.Update(user);
+            training.users.Add(user);
+            training.UserId = user.Id;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Startpage", "Trainings");
+        }
+
     }
 }

@@ -21,7 +21,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Отзывы</a>
+			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Программы тренировок</a>
 	
 		</header>
 
@@ -36,13 +36,15 @@
 						System.Random rand = new Random();
 						string newFileName = @"/images/pic0" + rand.Next(8) + ".jpg";
 					}
-							<a href="#" class="image"><img src="@newFileName" alt="" data-position="top center" /></a>
+							<a class="image"><img src="@newFileName" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
 									<h2>@Html.DisplayFor(modelItem => item.training_name)</h2>
 									<p>@Html.DisplayFor(modelItem => item.training_description)</p>
 									<ul class="actions">
-									<li><a class="button" asp-area="" asp-controller="Home" asp-action="LearnMore">Узнать больше</a></li>
+										<li>
+											<a class="button" asp-area="" asp-controller="Users" asp-action="AppendTrainings" asp-route-trainingID="@item.Id_training">Узнать больше</a>
+										</li>
 									</ul>
 								</div>
 							</div>
