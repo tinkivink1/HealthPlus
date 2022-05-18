@@ -17,7 +17,7 @@ namespace HealthPlus.Controllers
 
         private readonly HealthPlusUsersContext _context;
         private int IdForAccount;
-        public Users user;
+        public ClientLog user;
         public UsersController(HealthPlusUsersContext context)
         {
             _context = context;
@@ -210,7 +210,7 @@ namespace HealthPlus.Controllers
         public async Task<IActionResult> AppendTrainings(int trainingID)
         {
             var training = _context.Trainings.FindAsync(trainingID).Result;
-            user = _context.Users.FindAsync(IdForAccount).Result;
+            user = new ClientLog(_context.Users.FindAsync(IdForAccount).Result);
             user.trainings.Add(training);
             _context.Update(user);
             training.users.Add(user);

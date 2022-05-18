@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthPlus.Migrations
 {
     [DbContext(typeof(HealthPlusUsersContext))]
-    [Migration("20220517225916_InitialCreate")]
+    [Migration("20220518131852_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,12 +49,7 @@ namespace HealthPlus.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("usersId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_training");
-
-                    b.HasIndex("usersId");
 
                     b.ToTable("Trainings");
                 });
@@ -91,18 +86,34 @@ namespace HealthPlus.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HealthPlus.Models.Trainings", b =>
+            modelBuilder.Entity("TrainingsUsers", b =>
                 {
-                    b.HasOne("HealthPlus.Models.Users", "users")
-                        .WithMany("trainings")
-                        .HasForeignKey("usersId");
+                    b.Property<int>("trainingsId_training")
+                        .HasColumnType("int");
 
-                    b.Navigation("users");
+                    b.Property<int>("usersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("trainingsId_training", "usersId");
+
+                    b.HasIndex("usersId");
+
+                    b.ToTable("TrainingsUsers");
                 });
 
-            modelBuilder.Entity("HealthPlus.Models.Users", b =>
+            modelBuilder.Entity("TrainingsUsers", b =>
                 {
-                    b.Navigation("trainings");
+                    b.HasOne("HealthPlus.Models.Trainings", null)
+                        .WithMany()
+                        .HasForeignKey("trainingsId_training")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HealthPlus.Models.Users", null)
+                        .WithMany()
+                        .HasForeignKey("usersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

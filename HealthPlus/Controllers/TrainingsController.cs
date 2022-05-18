@@ -160,9 +160,9 @@ namespace HealthPlus.Controllers
           return (_context.Trainings?.Any(e => e.Id_training == id)).GetValueOrDefault();
         }
 
-        public async Task<IActionResult> Startpage()
+        public async Task<IActionResult> Startpage(int userID)
         {
-
+            var user = 
             return _context.Trainings != null ?
                         View(await _context.Trainings.ToListAsync()) :
                         Problem("Entity set 'HealthPlusUsersContext.Trainings'  is null.");
