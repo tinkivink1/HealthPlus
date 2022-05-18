@@ -16,7 +16,16 @@
                 @Html.DisplayNameFor(model => model.training_name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.training_description)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.exercise_list)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
             </th>
             <th></th>
         </tr>
@@ -28,7 +37,16 @@
                 @Html.DisplayFor(modelItem => item.training_name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.training_description)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.exercise_list)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id_training">Edit</a> |

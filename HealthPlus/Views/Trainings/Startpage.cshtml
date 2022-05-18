@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HealthPlus.Models.Trainings>
+
+@{
+    ViewData["Title"] = "Программы тренировок";
+}
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Elements - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="~/css/main.css" />
+		<noscript><link rel="stylesheet" href="~/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<a class="title" asp-area="" asp-controller="Home" asp-action="Index">Отзывы</a>
+	
+		</header>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<!-- Main -->
+					<!-- Image -->
+					<section id="one" class="wrapper style2 spotlights">
+						@foreach (var item in Model) {
+							<section>
+					@{
+						System.Random rand = new Random();
+						string newFileName = @"/images/pic0" + rand.Next(8) + ".jpg";
+					}
+							<a href="#" class="image"><img src="@newFileName" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>@Html.DisplayFor(modelItem => item.training_name)</h2>
+									<p>@Html.DisplayFor(modelItem => item.training_description)</p>
+									<ul class="actions">
+									<li><a class="button" asp-area="" asp-controller="Home" asp-action="LearnMore">Узнать больше</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						}
+					</section>
+				</div>
+		<!-- Footer -->
+		<footer id="footer" class="wrapper alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="~/js/jquery.min.js"></script>
+		<script src="~/js/jquery.scrollex.min.js"></script>
+		<script src="~/js/jquery.scrolly.min.js"></script>
+		<script src="~/js/browser.min.js"></script>
+		<script src="~/js/breakpoints.min.js"></script>
+		<script src="~/js/util.js"></script>
+		<script src="~/js/main.js"></script>
+
+	</body>
+</html>

@@ -24,7 +24,7 @@ namespace HealthPlus.Controllers
         {
               return _context.Trainings != null ? 
                           View(await _context.Trainings.ToListAsync()) :
-                          Problem("Entity set 'HealthPlusUsersContext.Trainings' is null.");
+                          Problem("Entity set 'HealthPlusUsersContext.Trainings'  is null.");
         }
 
         // GET: Trainings/Details/5
@@ -56,7 +56,7 @@ namespace HealthPlus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_training,training_name,exercise_list")] Trainings trainings)
+        public async Task<IActionResult> Create([Bind("Id_training,training_name,training_description,exercise_list,image,UserId")] Trainings trainings)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace HealthPlus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_training,training_name,exercise_list")] Trainings trainings)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_training,training_name,training_description,exercise_list,image,UserId")] Trainings trainings)
         {
             if (id != trainings.Id_training)
             {
@@ -158,6 +158,14 @@ namespace HealthPlus.Controllers
         private bool TrainingsExists(int id)
         {
           return (_context.Trainings?.Any(e => e.Id_training == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> Startpage()
+        {
+
+            return _context.Trainings != null ?
+                        View(await _context.Trainings.ToListAsync()) :
+                        Problem("Entity set 'HealthPlusUsersContext.Trainings'  is null.");
         }
     }
 }
