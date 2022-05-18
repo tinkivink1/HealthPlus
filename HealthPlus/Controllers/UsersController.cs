@@ -14,10 +14,10 @@ namespace HealthPlus.Controllers
 {
     public class UsersController : Controller
     {
-     
+
         private readonly HealthPlusUsersContext _context;
         private int IdForAccount;
-    
+        public Users user;
         public UsersController(HealthPlusUsersContext context)
         {
             _context = context;
@@ -26,16 +26,16 @@ namespace HealthPlus.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-              return _context.Users != null ? 
-                          View(await _context.Users.ToListAsync()) :
-                          Problem("Entity set 'HealthPlusUsersContext.Users'  is null.");
+            return _context.Users != null ?
+                        View(await _context.Users.ToListAsync()) :
+                        Problem("Entity set 'HealthPlusUsersContext.Users' is null.");
         }
-          public IActionResult Registration()
-            {
+        public IActionResult Registration()
+        {
             return View();
-            }
+        }
 
-        public IActionResult Account()
+        public  IActionResult Account()
         {
             return View();
         }
@@ -77,7 +77,7 @@ namespace HealthPlus.Controllers
         public async Task<IActionResult> Create([Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 _context.Add(users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Registration));
@@ -153,23 +153,37 @@ namespace HealthPlus.Controllers
 
             return View(users);
         }
-        public async Task<RedirectToActionResult> Loginn(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
+        public IActionResult Loginn(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
         {
-            var usersColl = await _context.Users.Select(b => b).ToListAsync();
+            _context.Users.Add(users);
+            var usersColl =  _context.Users.Select(b => b).ToList();
             for (int i = 0; i < usersColl.Count; i++)
             {
                 if (users.client_email == usersColl[i].client_email && users.client_password == usersColl[i].client_password)
                 {
-                    IdForAccount = usersColl[i].Id;
-                    return RedirectToAction(nameof(Account));
+                  
+                    //return RedirectToAction(nameof(Account));
+                    int id1 = usersColl[i].Id;
+                    if (id1 == null || _context.Users == null)
+                    {
+                        return NotFound();
+                    }
+
+                    var users1 =  _context.Users.Find(id1);
+                    if (users == null)
+                    {
+                        return NotFound();
+                    }
+                    return View("Account", users1);
                 }
-               
+
             }
+
             return RedirectToAction(nameof(Registration));
         }
 
 
-      
+
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -184,14 +198,14 @@ namespace HealthPlus.Controllers
             {
                 _context.Users.Remove(users);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UsersExists(int id)
         {
-          return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

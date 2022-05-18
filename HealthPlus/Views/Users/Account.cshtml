@@ -1,5 +1,8 @@
-﻿<!DOCTYPE HTML>
+﻿@model HealthPlus.Models.Users
+
+<!DOCTYPE HTML>
 <!--
+
 	Hyperspace by HTML5 UP
 	html5up.net | ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
@@ -19,10 +22,10 @@
 				<div class="inner">
 					<nav>
 						<ul>
-							<li><a href="#intro">Личная информация</a></li>
-							<li><a href=#one>План тренировок</a></li>
-							<li><a href="#two">Календарь</a></li>
-							<li><a href="#three">Связаться</a></li>
+					
+							<li><a href=#one>Личная информация</a></li>
+							<li><a href="#two">Тренировки</a></li>
+							<li><a href="#three">Календарь</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -30,126 +33,141 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-					</table>
-					</section>
-
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
 							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>Взаимодействие</h2>
-									<p>Для удобного взаимодействия с нашим сервисом вы можете зарегистрироваться! Сделать это можно всего в несколько кликов!</p>
+									<h2>Личная информация</h2>
 									<ul class="actions">
-										<li><a class="button" asp-area="" asp-controller="Home" asp-action="Login">Регестрация</a></li>
-							
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="~/images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>С заботой о вашем здоровье</h2>
-									<p>Прочитайте о методах, которые мы используем для реабилитации наших пользователей!</p>
-									<ul class="actions">
-									<li><a class="button" asp-area="" asp-controller="Home" asp-action="LearnMore">Узнать больше</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="~/images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Сомневаетесь?</h2>
-									<p>Прочитайте реальные отзывы людей, которым помогли наши тренировки!</p>
-									<ul class="actions">									
-										<li><a class="button" asp-area="" asp-controller="Home" asp-action="LearnMore">Узнать больше</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
+			<li
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="client_name" class="control-label"></label>
+                <input asp-for="client_name" class="form-control" />
+                <span asp-validation-for="client_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="client_surname" class="control-label"></label>
+                <input asp-for="client_surname" class="form-control" />
+                <span asp-validation-for="client_surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="client_password" class="control-label"></label>
+                <input asp-for="client_password" class="form-control" />
+                <span asp-validation-for="client_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="client_email" class="control-label"></label>
+                <input asp-for="client_email" class="form-control" />
+                <span asp-validation-for="client_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+										</li>
+										</ul>
+										</div>
+										</div>
 					</section>
 
 				<!-- Two -->
 					<section id="two" class="wrapper style3 fade-up">
-					<div class="look-calendar">
-						<table id="calendar">
-							<thead>
-								<tr>
-							<td><b>‹</b>
-						<td colspan="5">
-					<td><b>›</b>
-				<tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-						</thead>
-					<tbody></tbody>
-					</table>
-						</div>
+					
+					
 					</section>
 
 				<!-- Three -->
 					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Связаться</h2>
-							<p>Возникли вопросы? Пишите нам!</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(000) 000-0000</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
+					<style>
+#calendar2 {
+  width: 100%;
+  font: monospace;
+  line-height: 1.2em;
+  font-size: 15px;
+  text-align: center;
+  
+}
+#calendar2 thead tr:last-child {
+  font-size: large;
+  color: white;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(2) {
+  color: white;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+  cursor: pointer;
+}
+#calendar2 tbody td {
+  color: white;
+}
+#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+  color: rgb(255,99,71);
+}
+#calendar2 tbody td.today {
+  background: rgb(218,165,32);
+  color: white;
+}
+</style>
+
+<table id="calendar2">
+  <thead>
+    <tr><td>‹<td colspan="5"><td>›
+    <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+  <tbody>
+</table>
+
+<script>
+function Calendar2(id, year, month) {
+var Dlast = new Date(year,month+1,0).getDate(),
+    D = new Date(year,month,Dlast),
+    DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+    DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+    calendar = '<tr>',
+    month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+if (DNfirst != 0) {
+  for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+}else{
+  for(var  i = 0; i < 6; i++) calendar += '<td>';
+}
+for(var  i = 1; i <= Dlast; i++) {
+  if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+    calendar += '<td class="today">' + i;
+  }else{
+    calendar += '<td>' + i;
+  }
+  if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+    calendar += '<tr>';
+  }
+}
+for(var  i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
+document.querySelector('#'+id+' tbody').innerHTML = calendar;
+document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+    document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+}
+}
+Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+// переключатель минус месяц
+document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+  Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)-1);
+}
+// переключатель плюс месяц
+document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+  Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)+1);
+}
+</script>
 					</section>
 
 			</div>
@@ -171,52 +189,8 @@
 			<script src="~/js/breakpoints.min.js"></script>
 			<script src="~/js/util.js"></script>
 			<script src="~/js/main.js"></script>
-			<script>
-  function calendar(id, year, month) {
-    var Dlast = new Date(year, month + 1, 0).getDate(),
-      D = new Date(year, month, Dlast),
-      DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
-      DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(),
-      calendar = '<tr>',
-      month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-    if (DNfirst != 0) {
-      for (var i = 1; i < DNfirst; i++) calendar += '<td>';
-    } else {
-       for (var i = 0; i < 6; i++) calendar += '<td>';
-    }
-    for (var i = 1; i <= Dlast; i++) {
-       if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-        calendar += '<td class="today">' + i;
-       } else {
-         calendar += '<td>' + i;
-       }
-       if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
-         calendar += '<tr>';
-       }
-    }
-    for (var i = DNlast; i < 7; i++) calendar += '<td> ';
-    document.querySelector('#' + id + ' tbody').innerHTML = calendar;
-    document.querySelector('#' + id + ' thead td:nth-child(2)').innerHTML = month[D.getMonth()] + ' ' + D.getFullYear();
-    document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.month = D.getMonth();
-    document.querySelector('#' + id + ' thead td:nth-child(2)').dataset.year = D.getFullYear();
-    if (document.querySelectorAll('#' + id + ' tbody tr').length < 6) { 
-        // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
-    document.querySelector('#' + id + ' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
-    }
-  }
-  calendar("calendar", new Date().getFullYear(), new Date().getMonth());
-        // переключатель минус месяц
-  document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
-    calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) - 1);
-  }
-        // переключатель плюс месяц
-  document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
-    calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) + 1);
-  }
-</script>
-
-
-		
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 	</body>
 </html>
