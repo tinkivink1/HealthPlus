@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthPlus.Migrations
 {
     [DbContext(typeof(HealthPlusUsersContext))]
-    [Migration("20220518131852_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220523230207_Test")]
+    partial class Test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

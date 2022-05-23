@@ -162,7 +162,7 @@ namespace HealthPlus.Controllers
 
         public async Task<IActionResult> Startpage(int userID)
         {
-            var user = 
+            var user = _context.Users.FindAsync(userID); 
             return _context.Trainings != null ?
                         View(await _context.Trainings.ToListAsync()) :
                         Problem("Entity set 'HealthPlusUsersContext.Trainings'  is null.");
