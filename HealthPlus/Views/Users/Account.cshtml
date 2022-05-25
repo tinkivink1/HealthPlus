@@ -82,11 +82,11 @@
 
 				<!-- Two -->
 				<section id="intro" class="wrapper style1 fullscreen fade-up">
-						@if(Model.trainings == null){
-						<form asp-area="" asp-controller = "trainings" asp-action = "startpage" asp-route-userID = "@Model.Id">
-							<div class="form-group">
-								<input type="submit" value="Подобрать программы тренировок" class="btn btn-primary"/>
-							</div>
+				@if(Model.trainings == null || Model.trainings.Count() == 0){
+					<form asp-area="" asp-controller = "trainings" asp-action = "startpage" asp-route-userID = "@Model.Id">
+						<div class="form-group">
+							<input type="submit" value="Подобрать программы тренировок" class="btn btn-primary"/>
+						</div>
 					</form>
 						}
 				else
@@ -97,6 +97,9 @@
 						System.Random rand = new Random();
 						string newFileName = @"/images/pic0" + rand.Next(8) + ".jpg";
 					}
+					<!---------
+
+				
 							<a class="image"><img src="@newFileName" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
@@ -106,6 +109,29 @@
 									<p>@Html.DisplayFor(modelItem => item.exercise_list)</p>
 								</div>
 							</div>
+								-->
+						<h2>Тренировки</h2>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>Название</th>
+										<th>Описание</th>
+										<th>Техника выполнения</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>@Html.DisplayFor(modelItem => item.training_name)</td>
+										<td>@Html.DisplayFor(modelItem => item.training_description)</td>
+										<td>@Html.DisplayFor(modelItem => item.exercise_list)</td>
+									</tr>
+								</tbody>
+								<tfoot>
+								</tfoot>
+							</table>
+						</div>
+
 						</section>
 						}
 				}

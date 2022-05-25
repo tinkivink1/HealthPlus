@@ -36,6 +36,10 @@ namespace HealthPlus.Controllers
 
         public  IActionResult Account(Users users)
         {
+            var usersList = _context.Users.Include(c => c.trainings).ToArray();
+            foreach (var user in usersList)
+                if (user.Id == users.Id)
+                    users = new Users(user);
             return View(users);
         }
         public IActionResult Login()
@@ -168,6 +172,7 @@ namespace HealthPlus.Controllers
                     }
 
                     var users1 =  _context.Users.Find(id1);
+                    
                     if (users == null)
                     {
                         return NotFound();
