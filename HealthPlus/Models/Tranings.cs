@@ -6,6 +6,16 @@ namespace HealthPlus.Models
 {
     public class Trainings
     {
+        public Trainings() { }
+        public Trainings(Trainings trainings)
+        {
+            Id_training = trainings.Id_training;
+            training_name = trainings.training_name;
+            training_description = trainings.training_description;
+            exercise_list = trainings.exercise_list;
+            Array.Copy(trainings.image, image, trainings.image.Length);
+            users = new List<Users>(trainings.users);
+        }
        [Key]
         public int Id_training { get; set; }
         public string training_name { get; set; }

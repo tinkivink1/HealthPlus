@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HealthPlus.Models.Trainings>
+﻿@model HealthPlus.Models.UserAndTrainings
 
 @{
     ViewData["Title"] = "Программы тренировок";
@@ -30,7 +30,7 @@
 			<!-- Main -->
 					<!-- Image -->
 					<section id="one" class="wrapper style2 spotlights">
-						@foreach (var item in Model) {
+						@foreach (var item in Model.trainings) {
 							<section>
 					@{
 						System.Random rand = new Random();
@@ -41,9 +41,11 @@
 								<div class="inner">
 									<h2>@Html.DisplayFor(modelItem => item.training_name)</h2>
 									<p>@Html.DisplayFor(modelItem => item.training_description)</p>
+									<h2>Техника выполнения</h2>
+									<p>@Html.DisplayFor(modelItem => item.exercise_list)</p>
 									<ul class="actions">
 										<li>
-											<a class="button" asp-area="" asp-controller="Users" asp-action="AppendTrainings" asp-route-trainingID="@item.Id_training">Узнать больше</a>
+											<a class="button" asp-area="" asp-controller="Users" asp-action="AppendTrainings" asp-route-trainingID="@item.Id_training" asp-route-userID="@Model.users.Id">Добавить в список тренировок</a>
 										</li>
 									</ul>
 								</div>

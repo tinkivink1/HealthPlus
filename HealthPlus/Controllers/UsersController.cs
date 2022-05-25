@@ -17,7 +17,6 @@ namespace HealthPlus.Controllers
 
         private readonly HealthPlusUsersContext _context;
         private int IdForAccount;
-        public ClientLog user;
         public UsersController(HealthPlusUsersContext context)
         {
             _context = context;
@@ -35,9 +34,9 @@ namespace HealthPlus.Controllers
             return View();
         }
 
-        public  IActionResult Account()
+        public  IActionResult Account(Users users)
         {
-            return View();
+            return View(users);
         }
         public IActionResult Login()
         {
@@ -80,7 +79,7 @@ namespace HealthPlus.Controllers
             {
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Registration));
+                return RedirectToAction(nameof(Login));
             }
             return View(users);
         }
@@ -173,7 +172,7 @@ namespace HealthPlus.Controllers
                     {
                         return NotFound();
                     }
-                    return View("Account", users1);
+                    return RedirectToAction(nameof(Account), new Users(users1));
                 }
 
             }
@@ -207,16 +206,15 @@ namespace HealthPlus.Controllers
             return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public async Task<IActionResult> AppendTrainings(int trainingID)
+        public async Task<IActionResult> AppendTrainings(int trainingID, int userID)
         {
-            var training = _context.Trainings.FindAsync(trainingID).Result;
-            user = new ClientLog(_context.Users.FindAsync(IdForAccount).Result);
+            var training = await _context.Trainings.FindAsync(trainingID);
+            Users user = await _context.Users.FindAsync(userID);
             user.trainings.Add(training);
             _context.Update(user);
             training.users.Add(user);
-            training.UserId = user.Id;
             await _context.SaveChangesAsync();
-            return RedirectToAction("Startpage", "Trainings");
+            return RedirectToAction(nameof(Account), new Users(user));
         }
 
     }

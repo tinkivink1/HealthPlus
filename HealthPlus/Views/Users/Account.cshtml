@@ -81,13 +81,35 @@
 					</section>
 
 				<!-- Two -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
+				<section id="intro" class="wrapper style1 fullscreen fade-up">
+						@if(Model.trainings == null){
 						<form asp-area="" asp-controller = "trainings" asp-action = "startpage" asp-route-userID = "@Model.Id">
 							<div class="form-group">
 								<input type="submit" value="Подобрать программы тренировок" class="btn btn-primary"/>
 							</div>
-						</form>
-					</section>
+					</form>
+						}
+				else
+				{
+					@foreach (var item in Model.trainings) {
+							<section>
+					@{
+						System.Random rand = new Random();
+						string newFileName = @"/images/pic0" + rand.Next(8) + ".jpg";
+					}
+							<a class="image"><img src="@newFileName" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>@Html.DisplayFor(modelItem => item.training_name)</h2>
+									<p>@Html.DisplayFor(modelItem => item.training_description)</p>
+									<h2>Техника выполнения</h2>
+									<p>@Html.DisplayFor(modelItem => item.exercise_list)</p>
+								</div>
+							</div>
+						</section>
+						}
+				}
+			</section>
 				<!-- Three -->
 					<section id="three" class="wrapper style1 fade-up">
 					<style>

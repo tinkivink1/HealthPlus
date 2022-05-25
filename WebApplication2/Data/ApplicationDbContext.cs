@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace HealthPlus.Data
+namespace WebApplication2.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
