@@ -13,6 +13,8 @@ namespace HealthPlus.Models
             this.client_password = users.client_password;
             this.client_email = users.client_email;
             this.age = users.age;
+            this.information = users.information;
+            this.goal = users.goal;
             trainings = new List<Trainings>(users.trainings);
         }
         public int Id { get; set; }
@@ -22,6 +24,8 @@ namespace HealthPlus.Models
         public string client_email { get; set; }
         public int age { get; set; }
         public List<Trainings>? trainings { get; set; } = new();
+        public string  goal { get; set; }
+        public string information { get; set; }
     }
 
 }

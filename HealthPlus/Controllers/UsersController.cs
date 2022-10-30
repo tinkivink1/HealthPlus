@@ -71,6 +71,10 @@ namespace HealthPlus.Controllers
         {
             return View();
         }
+        public IActionResult AddInformation()
+        {
+            return View();
+        }
 
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -156,7 +160,7 @@ namespace HealthPlus.Controllers
 
             return View(users);
         }
-        public IActionResult Loginn(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age")] Users users)
+        public IActionResult Loginn(int id, [Bind("Id,client_name,client_surname,client_password,client_email,age, information, goal")] Users users)
         {
             _context.Users.Add(users);
             var usersColl =  _context.Users.Select(b => b).ToList();
@@ -218,6 +222,16 @@ namespace HealthPlus.Controllers
             user.trainings.Add(training);
             _context.Update(user);
             training.users.Add(user);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Account), new Users(user));
+        }
+        [HttpPost, ActionName("AddInformation")]
+        public async Task<IActionResult> AddInformation(int userID, string information, string goal)
+        {
+            Users user = await _context.Users.FindAsync(userID);
+            user.goal = goal;
+            user.information = information;
+            _context.Update(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Account), new Users(user));
         }

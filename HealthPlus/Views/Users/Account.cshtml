@@ -46,27 +46,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="client_name" class="control-label"></label>
+                <label asp-for="client_name" class="control-label">Имя</label>
                 <input asp-for="client_name" class="form-control" />
                 <span asp-validation-for="client_name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="client_surname" class="control-label"></label>
+                <label asp-for="client_surname" class="control-label">Фамилия</label>
                 <input asp-for="client_surname" class="form-control" />
                 <span asp-validation-for="client_surname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="client_password" class="control-label"></label>
+                <label asp-for="client_password" class="control-label">Пароль</label>
                 <input asp-for="client_password" class="form-control" />
                 <span asp-validation-for="client_password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="client_email" class="control-label"></label>
+                <label asp-for="client_email" class="control-label">Электронная почта</label>
                 <input asp-for="client_email" class="form-control" />
                 <span asp-validation-for="client_email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="age" class="control-label"></label>
+                <label asp-for="age" class="control-label">Возраст</label>
                 <input asp-for="age" class="form-control" />
                 <span asp-validation-for="age" class="text-danger"></span>
             </div>
@@ -79,7 +79,35 @@
 										</div>
 										</div>
 					</section>
-
+		<section id="two" class="wrapper style2 spotlights">
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Выбрать цель</h2>
+									<ul class="actions">
+			<li
+        <form asp-action="AddInformation" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="client_name" class="control-label">Информация</label>
+                <input asp-for="client_name" class="form-control" />
+                <span asp-validation-for="client_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="client_surname" class="control-label">Цель</label>
+                <input asp-for="client_surname" class="form-control" />
+                <span asp-validation-for="client_surname" class="text-danger"></span>
+           </div>
+            <div class="form-group">
+                <input type="submit" value="AddInformation" class="btn btn-primary" />
+            </div>
+        </form>
+				</li>
+					</ul>
+						</div>
+							</div>
+					</section>
 				<!-- Two -->
 				<section id="intro" class="wrapper style1 fullscreen fade-up">
 				@if(Model.trainings == null || Model.trainings.Count() == 0){
